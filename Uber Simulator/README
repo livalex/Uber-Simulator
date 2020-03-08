@@ -1,0 +1,170 @@
+Copyright[2019] <Livadaru Alexandru-Valentin 313CA>
+
+			TEMA2 - STRUCTURI DE DATE
+
+		STRUCTURA INFORMATION
+-celulele din dinctionarulmeu vor avea doua campuri:cheia si valoarea.
+
+-ele sunt numele si respectiv indicele care il va avea la introducere.
+
+		CLASA DICTIONARY
+
+-range reprezinta numarul de elemente din dictionar.
+
+-quantity reprezinta "inaltimea" dictionarului.
+
+	EXPLICIT DICTIONARY
+
+-initial mi-am facut un constructor cu parametrul quantity.
+
+-am renuntat la idee cand primeam erori la declaratii in campul private din Solver.
+
+	DICTIONARY()
+
+-asa ca am facut un constructor fara parametri si am initializat totul la 0/nullptr.
+
+	ALLOC_MEMORY
+
+-am luat o functie alloc_memory,aici aloc efeciv dictionarul folosind ca marime quantity
+
+-am facut asta ca sa declar graful si hashtable-ul doar o data in private
+
+-apoi sa aloc memorie doar unde aveam nevoie de ea alocata(task1)
+	
+	~DICTIONARY()
+
+-parcurg toate elementele din dictionar si cat timp nu e gol scot elementele.
+
+-apoi eliberez dictionarul gol.
+
+	HASHFUNCTION
+
+-inputul era destul de accesibil,asa ca nu mi-am creat o functie de hash complicata
+
+-se inmulteste doi cu lungimea inputului si se face modulo quantity
+
+	INSERT
+
+-generez indexul din dictionar cu ajutorul functiei de hash.
+
+-parcurg lista de la nivelul j al hashtable-ului cu un iterator
+
+-daca sunt duplicate fac update la valoare
+
+-daca nu, creez un nod si il adaug cu cheia si valoarea respectiva si maresc rangeul
+
+	GET	
+
+-genereaza j,adica idicele din dictionar al inputului
+
+-cauta la nivelul j cheia respectiva,daca o gaseste returneaza valoarea
+
+		CLASA GRAPH
+
+-mi-a declarat o matrice pe care o voi face de marimea size x size.
+
+-aceasta va fi matricea de adiacenta pentru a putea reprezenta graful.
+
+	GRAPH(CONST INT SIZE)
+
+-aceeasi poveste cu eroarea ca la hashtable
+
+	GRAPH()
+
+-initializez size la 0.
+
+	SET_SIZE
+
+-initializez size la un parametru dat ulterior
+
+-creez propriu-zis matricea
+
+	ADDEDGE
+
+-creez drum intre punctele line si column
+
+	REMOVEEDGE
+
+-sterg drum dintre punctele line si column
+
+	HASEDGE
+
+-returnez true daca e drum intre line si column,false in caz comtrar.
+
+	BFS
+
+-initializam vecotrul distance de N elemente cu -1.
+
+-in distance vom stoca distantele de la start la noduri.
+
+-initial niciun nod nu e vizitat
+
+-bagam nodul de inceput in coada(beginning),il marcam ca vizitat si  punem distanta 0.
+
+-cat timp coada nu e goala,luam primul element din coada si il facem nod curent.
+
+-il scoatem din coada,parcurgem nivelul din matrice de la nodul curent
+
+-verificam daca exista drum intre nodul curent si nodul i.
+
+-daca da si i e chiar ending-ul si nu a mai fost vizitat,il marcam,marim dist cu 1
+
+-apoi returnam distanta pana la el
+
+-in caz ca i nu e nodul de sfarsit si nu a fost vizitat,il bagam in coada
+
+-apoi il marcam ca vizitat si marim distanta pana la el cu 1.
+
+-daca beginning e diferit de ending returnam -1(nu exista drum)
+
+-altfel, returnam 0.
+
+	TASK1_SOLVER
+
+-in principiu alocam memorie pentru hashtable si graph
+
+-citim fiecare itersectie si o adaugam in hashtable
+
+-facem rost de indicele intersectiilor si adaugam drumuri conform inputului
+
+-daca BFS returneaza -1 punem n,daca nu,punem y.
+
+	TASK2_SOLVER
+
+-returnam lungimea drumului de la coord1 la coord2
+
+-daca nu exista,punem -1,daca e drum spre il insusi,punem 0.
+
+	TASK3_SOLVER
+
+-citim tipul operatiei, locatia1,locatia2 si gradul
+
+-daca e de tip c si grad 0,facem drum dintre index1 si index2
+
+-daca e de tip c si grad 1,blocam drumul
+
+-daca e de tip c si grad 2,facem drum bidirectional
+
+-daca e de tip c si grad 3,verificam daca e drum de la una la alta si inversam sensul.
+
+-apoi marcam ca modificat,continuam verificarile
+
+-daca gasim acelasi drum dar de sens invers si nu a mai fost modificat,inversam sensul
+
+-daca e de tip q si grad 0,verificam cu BFS din graph daca exista drum sau nu
+
+-daca e de tip q si grad 1,intoarcem lungimea drumului de la index1 la index2
+
+-daca e de tip q si grad 2,facem BFS de la start la punctul intermediar,notam distanta
+
+-apoi facem BFS de la punctul intermediar la finish si notam distanta
+
+-daca nu exista unul dintre drumuri returnam -1
+
+-daca exista toate drumurile,intoarcem distantele insumate
+
+Sper ca am oferit explicatii destul de detaliate legate de toate.
+Iti multumesc frumos pentru timpul acordat citirii temei mele.
+Iti doresc o zi buna!:) 
+
+
